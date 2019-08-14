@@ -1,0 +1,9 @@
+#*.gitignore
+*/__pycache__/
+*/.git/
+*/exe-data/
+/Data-2017/
+/Data-2018/
+*.log
+*k_meanspp
+*.xlsx

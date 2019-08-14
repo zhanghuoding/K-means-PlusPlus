@@ -42,6 +42,10 @@ Welcom!
 	   $./k_meanspp  ./exampleData.csv 2 15
 	   This means that the second column of the file "example.csv" will be grouped into 15 
 	   categories.
+	   In this README.md file, all use format CSV file viewer named csvlook and the file processing
+	   tool named head under Linux to view the file contents, like the following:
+	   $head ./clustered_column_1-based_exampleData.csv | csvlook
+
 	   Forexample, original data file "exampleData.csv" like the following:
 	   
 	   | 30 | 0.87 | 0.04 |               0.008… |               0.007… |

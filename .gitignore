@@ -7,4 +7,5 @@
 *.log
 *k_meanspp
 *.xlsx
+*.o
 *.csv

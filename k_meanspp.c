@@ -86,11 +86,14 @@ int main( int argc, char *argv[] )
          {
 		perror("Too few parameters, you should set 4 parameters.");
 
+/*
 		printf("\n");
 	 	printf("The first parameter is the name of this propram.\n");
 	 	printf("The second parameter is the name and path of the data file.\n");
 		printf("The third parameter indicate which column we should change.\n");
 	 	printf("The forth parameter indicate how many classes we need.\n");
+*/
+		printf("Usage: k_meanspp fileName columnNumber clusterAmount\n");
 
 		exit(1);
         }

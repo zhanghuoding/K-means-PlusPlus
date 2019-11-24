@@ -13,10 +13,8 @@ ls -alh $dataPath_2017
 #head $dataPath_2017/batch_instance-with_heads.csv
 #sed -i '1 istart_timestamp,end_timestamp,job_id,task_id,machineID,status,seq_no,total_seq_no,real_cpu_max,real_cpu_avg,real_mem_max,real_mem_avg' $dataPath_2017/batch_instance-with_heads.csv
 #head $dataPath_2017/batch_instance-with_heads.csv
-awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance.csv
-awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance-with_heads.csv
+#awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance.csv
+#awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance-with_heads.csv
 #pip --version
 #pip install csvkit
 head $dataPath_2017/batch_instance-with_heads.csv | csvlook
-docker container ls -a
-docker image ls -a

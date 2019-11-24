@@ -5,7 +5,7 @@ stages:
         - test_environment
 
 test_project:
-        stage:test_environment
+        stage: test_environment
         tags:
                 - G1-C
         script:

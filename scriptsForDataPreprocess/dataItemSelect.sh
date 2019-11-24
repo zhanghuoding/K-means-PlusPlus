@@ -25,26 +25,8 @@ tee -i $dataPath/test.py <<-"EOF"
 import os
 import time
 import sys
-import StringIO
-from datetime import *
-from datetime import datetime, tzinfo,timedelta
-import hashlib
-import hmac
-import hashlib
-import base64
-import logging
-from logging.handlers import RotatingFileHandler
-import subModule
-import json
-import logging.config
-import subprocess
-import xml.etree.ElementTree
-import configparser
 import random
 import string
-import shutil
-import paramiko
-import urllib.request
 import requests
 import tkinter
 import xlrd

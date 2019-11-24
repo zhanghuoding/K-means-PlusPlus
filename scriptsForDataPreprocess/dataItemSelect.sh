@@ -15,6 +15,6 @@ ls -alh $dataPath_2017
 #head $dataPath_2017/batch_instance-with_heads.csv
 awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance.csv
 awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance-with_heads.csv
-pip --version
-pip install csvkit
+#pip --version
+#pip install csvkit
 head $dataPath_2017/batch_instance-with_heads.csv | csvlook

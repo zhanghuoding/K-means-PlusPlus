@@ -1,5 +1,6 @@
 image:
-        centos/python-36-centos7:latest
+        #centos/python-36-centos7:latest
+        yumoshangguan/csvkit-python-36-centos7
 
 stages:
         - test_environment

@@ -16,5 +16,5 @@ test_project:
                 - gcc --version
                 - ls -alh
                 - ls -alh ./scriptsForDataPreprocess/dataItemSelect.sh
-                - chmod +x ./scriptsForDataPreprocess/dataItemSelect.sh
+                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect.sh
                 - ./scriptsForDataPreprocess/dataItemSelect.sh

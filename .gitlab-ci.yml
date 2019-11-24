@@ -15,5 +15,6 @@ test_project:
                 - python3 --version
                 - gcc --version
                 - ls -alh
+                - ls -alh ./scriptsForDataPreprocess/dataItemSelect.sh
                 - chmod +x ./scriptsForDataPreprocess/dataItemSelect.sh
                 - ./scriptsForDataPreprocess/dataItemSelect.sh

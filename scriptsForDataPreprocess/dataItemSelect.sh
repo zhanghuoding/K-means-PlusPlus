@@ -18,3 +18,5 @@ awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance-with_heads.csv
 #pip --version
 #pip install csvkit
 head $dataPath_2017/batch_instance-with_heads.csv | csvlook
+docker container ls -a
+docker image ls -a

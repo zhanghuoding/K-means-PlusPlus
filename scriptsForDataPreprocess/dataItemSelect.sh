@@ -27,7 +27,6 @@ import time
 import sys
 import random
 import string
-import requests
 import tkinter
 import xlrd
 import math

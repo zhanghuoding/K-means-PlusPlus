@@ -21,7 +21,6 @@ dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
 
 
 #We will select the item from file "batch_instance.csv".
-<<-!
 tee -i $dataPath/test.py <<-"EOF"
 import os
 import time
@@ -39,8 +38,7 @@ EOF
 
 cat $dataPath/test.py
 
-python $dataPath/test.py
-!
+python3 $dataPath/test.py
 
 pip freeze > $dataPath/modulesInstalled
 cat $dataPath/modulesInstalled

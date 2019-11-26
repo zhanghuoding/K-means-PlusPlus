@@ -12,11 +12,5 @@ test_project:
                 - G1-C
         script:
                 - pwd
-                - echo "这是测试！"
-                - python --version
-                - python3 --version
-                - gcc --version
-                #- ls -alh
-                - ls -alh ./scriptsForDataPreprocess/dataItemSelect.sh
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect.sh
                 - ./scriptsForDataPreprocess/dataItemSelect.sh

@@ -21,25 +21,5 @@ dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
 
 
 #We will select the item from file "batch_instance.csv".
-tee -i $dataPath/test.py <<-"EOF"
-import os
-import time
-import sys
-import random
-import string
-import tkinter
-import xlrd
-import math
-import networkx
-import matplotlib.pyplot
 
-exit()
-EOF
-
-cat $dataPath/test.py
-
-python3 $dataPath/test.py
-
-pip freeze > $dataPath/modulesInstalled
-cat $dataPath/modulesInstalled
-
+head $dataPath_2017/batch_instance-with_heads.csv | csvlook > $dataPath_2017/temp-batch_instance_heads_look

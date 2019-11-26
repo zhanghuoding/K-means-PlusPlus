@@ -31,6 +31,7 @@ echo "16218,16248,0.94,0.04,0.007589366603680791,0.007346051303289933" | csvlook
 echo "16218,16248,0.94,0.04,0.007589366603680791,0.007346051303289933" | csvlook > $dataPath_2017/temp
 
 
+head -300 $dataPath_2017/batch_instance_just_selected.csv
 head -300 $dataPath_2017/batch_instance_just_selected.csv | csvlook > $dataPath_2017/temp-batch_instance_selected_look
 #head -30 "$dataPath_2017/batch_instance_just_selected.csv" > ./temp
 #head -300 "$dataPath_2017/batch_instance_just_selected.csv" | csvlook

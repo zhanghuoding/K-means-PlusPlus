@@ -23,6 +23,6 @@ dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
 #We will select the item from file "batch_instance.csv".
 #head $dataPath_2017/batch_instance-with_heads.csv | csvlook > $dataPath_2017/temp-batch_instance_heads_look
 echo "" > $dataPath_2017/batch_instance_just_selected.csv
-awk -F , '{ if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1","$2","$9","$10","$11","$12  > $dataPath_2017/batch_instance_just_selected.csv; }' $dataPath_2017/batch_instance.csv
+awk -F , '{ if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1","$2","$9","$10","$11","$12  >> "$dataPath_2017/batch_instance_just_selected.csv"; }' $dataPath_2017/batch_instance.csv
 
 head -300 $dataPath_2017/batch_instance_just_selected.csv | csvlook > $dataPath_2017/temp-batch_instance_selected_look

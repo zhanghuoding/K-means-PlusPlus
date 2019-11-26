@@ -35,6 +35,10 @@ echo "" > $dataPath_2017/batch_instance_just_selected.csv
 #head -300 $dataPath_2017/batch_instance_just_selected.csv | csvlook > $dataPath_2017/temp-batch_instance_selected_look
 #head -30 "$dataPath_2017/batch_instance_just_selected.csv" > ./temp
 #head -300 "$dataPath_2017/batch_instance_just_selected.csv" | csvlook
-enca ${dataPath_2017}/*
+enca ${dataPath_2017}/batch_instance.csv
+enca $dataPath_2017/batch_instance_just_selected.csv
+enca $dataPath_2017/temp
 echo "================================================================="
-iconv ${dataPath_2017}/*
+iconv ${dataPath_2017}/batch_instance.csv
+iconv $dataPath_2017/batch_instance_just_selected.csv
+iconv $dataPath_2017/temp

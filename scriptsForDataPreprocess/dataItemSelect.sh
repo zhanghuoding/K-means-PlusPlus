@@ -12,6 +12,7 @@ dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
 #cp $dataPath_2017/batch_instance.csv $dataPath_2017/batch_instance-with_heads.csv
 #head $dataPath_2017/batch_instance-with_heads.csv
 #sed -i '1 istart_timestamp,end_timestamp,job_id,task_id,machineID,status,seq_no,total_seq_no,real_cpu_max,real_cpu_avg,real_mem_max,real_mem_avg' $dataPath_2017/batch_instance-with_heads.csv
+#echo "============================================="
 #head $dataPath_2017/batch_instance-with_heads.csv
 #awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance.csv
 #awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance-with_heads.csv
@@ -20,12 +21,3 @@ dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
 #echo "" > $dataPath_2017/batch_instance_just_selected.csv
 #awk -F , 'BEGIN{ OFS=","} { if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1,$2,$9,$10,$11,$12  >> "'${dataPath_2017}'/batch_instance_just_selected.csv"; } }' ${dataPath_2017}/batch_instance.csv
 
-echo "1,2,3,4,5,6" > $dataPath_2017/temp
-echo "1621873234237,16248.8278953,0.9488747463622734,0.04,0.007589366603680791,0.007346051303289933" >> $dataPath_2017/temp
-echo "============================================="
-cat $dataPath_2017/temp | csvlook
-
-ls -alh ./scriptsForDataPreprocess/
-
-#head -30 $dataPath_2017/batch_instance_just_selected.csv
-#head -30 $dataPath_2017/batch_instance_just_selected.csv | csvlook > $dataPath_2017/temp-batch_instance_selected_look

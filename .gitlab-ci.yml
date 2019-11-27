@@ -4,7 +4,7 @@ image:
         #yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.3
         #yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.4
         #yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.5-install_tool_called_file
-        yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.6-python_setDufaultEncoding_utf8
+        yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.6-setDufaultEncoding_utf8_for_python3.6
 
 stages:
         - test_environment

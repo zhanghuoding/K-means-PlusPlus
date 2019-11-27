@@ -20,9 +20,9 @@ dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
 #echo "" > $dataPath_2017/batch_instance_just_selected.csv
 #awk -F , 'BEGIN{ OFS=","} { if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1,$2,$9,$10,$11,$12  >> "'${dataPath_2017}'/batch_instance_just_selected.csv"; } }' ${dataPath_2017}/batch_instance.csv
 
-echo "1,2,3,4,5,6\n1621873234237,16248.8278953,0.9488747463622734,0.04,0.007589366603680791,0.007346051303289933"
-echo "=========================================="
-echo "1,2,3,4,5,6\n1621873234237,16248.8278953,0.9488747463622734,0.04,0.007589366603680791,0.007346051303289933" | csvlook
+echo "1,2,3,4,5,6\n1621873234237,16248.8278953,0.9488747463622734,0.04,0.007589366603680791,0.007346051303289933" > $dataPath_2017/temp
+echo "============================================="
+cat $dataPath_2017/temp | csvlook
 
 ls -alh ./scriptsForDataPreprocess/
 

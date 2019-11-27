@@ -38,7 +38,3 @@ echo "" > $dataPath_2017/batch_instance_just_selected.csv
 enca ${dataPath_2017}/batch_instance.csv
 enca $dataPath_2017/batch_instance_just_selected.csv
 enca $dataPath_2017/temp
-echo "================================================================="
-iconv ${dataPath_2017}/batch_instance.csv
-iconv $dataPath_2017/batch_instance_just_selected.csv
-iconv $dataPath_2017/temp

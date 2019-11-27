@@ -40,4 +40,7 @@ head -30 $dataPath_2017/batch_instance_just_selected.csv > $dataPath_2017/temp
 #enca $dataPath_2017/batch_instance_just_selected.csv
 #enca $dataPath_2017/temp
 file --mime-encoding ${dataPath_2017}/*
-head $dataPath_2017/batch_instance-with_heads.csv | csvlook
+head $dataPath_2017/temp
+echo "============================================================"
+head $dataPath_2017/batch_instance-with_heads.csv
+

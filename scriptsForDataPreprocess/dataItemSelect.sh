@@ -22,15 +22,15 @@ dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
 
 #We will select the item from file "batch_instance.csv".
 #head $dataPath_2017/batch_instance-with_heads.csv | csvlook > $dataPath_2017/temp-batch_instance_heads_look
-echo "" > $dataPath_2017/batch_instance_just_selected.csv
+#echo "" > $dataPath_2017/batch_instance_just_selected.csv
 #awk -F , 'BEGIN{ i = 20 } { if( i > 0 && $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { i -= 1; print $1","$2","$9","$10","$11","$12 ; } }' ${dataPath_2017}/batch_instance.csv
 #awk -F , '{ if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1","$2","$9","$10","$11","$12  >> "'${dataPath_2017}'/batch_instance_just_selected.csv"; } }' ${dataPath_2017}/batch_instance.csv
-awk -F , 'BEGIN{ OFS=","} { if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1,$2,$9,$10,$11,$12  >> "'${dataPath_2017}'/batch_instance_just_selected.csv"; } }' ${dataPath_2017}/batch_instance.csv
+#awk -F , 'BEGIN{ OFS=","} { if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1,$2,$9,$10,$11,$12  >> "'${dataPath_2017}'/batch_instance_just_selected.csv"; } }' ${dataPath_2017}/batch_instance.csv
 
 #echo "16218,16248,0.94,0.04,0.007589366603680791,0.007346051303289933" | csvlook
 #echo "16218,16248,0.94,0.04,0.007589366603680791,0.007346051303289933" | csvlook > $dataPath_2017/temp
 
-ls -alh
+ls -alh ./scriptsForDataPreprocess/
 
 #head -30 $dataPath_2017/batch_instance_just_selected.csv
 #head -30 $dataPath_2017/batch_instance_just_selected.csv | csvlook > $dataPath_2017/temp-batch_instance_selected_look

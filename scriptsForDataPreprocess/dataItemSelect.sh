@@ -36,6 +36,6 @@ ls -alh ./scriptsForDataPreprocess/
 #head -30 $dataPath_2017/batch_instance_just_selected.csv | csvlook > $dataPath_2017/temp-batch_instance_selected_look
 head -30 $dataPath_2017/batch_instance_just_selected.csv > $dataPath_2017/temp
 #head -30 $dataPath_2017/batch_instance_just_selected.csv | csvlook
-#enca ${dataPath_2017}/batch_instance.csv
-#enca $dataPath_2017/batch_instance_just_selected.csv
-#enca $dataPath_2017/temp
+enca ${dataPath_2017}/batch_instance.csv
+enca $dataPath_2017/batch_instance_just_selected.csv
+enca $dataPath_2017/temp

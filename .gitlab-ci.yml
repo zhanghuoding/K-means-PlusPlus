@@ -1,7 +1,8 @@
 image:
         #centos/python-36-centos7:latest
         #yumoshangguan/csvkit-python-36-centos7
-        yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.3
+        #yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.3
+        yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.4
 
 stages:
         - test_environment

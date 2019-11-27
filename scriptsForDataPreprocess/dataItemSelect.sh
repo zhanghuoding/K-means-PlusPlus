@@ -15,34 +15,16 @@ dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
 #head $dataPath_2017/batch_instance-with_heads.csv
 #awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance.csv
 #awk -F , 'END{print "lines="NR;}'  $dataPath_2017/batch_instance-with_heads.csv
-#pip --version
-#pip install csvkit
-#head $dataPath_2017/batch_instance-with_heads.csv | csvlook
-
 
 #We will select the item from file "batch_instance.csv".
-#head $dataPath_2017/batch_instance-with_heads.csv | csvlook > $dataPath_2017/temp-batch_instance_heads_look
 #echo "" > $dataPath_2017/batch_instance_just_selected.csv
-#awk -F , 'BEGIN{ i = 20 } { if( i > 0 && $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { i -= 1; print $1","$2","$9","$10","$11","$12 ; } }' ${dataPath_2017}/batch_instance.csv
-#awk -F , '{ if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1","$2","$9","$10","$11","$12  >> "'${dataPath_2017}'/batch_instance_just_selected.csv"; } }' ${dataPath_2017}/batch_instance.csv
 #awk -F , 'BEGIN{ OFS=","} { if( $1 > 0 && $2 > $1 && $6 == "Terminated" && $9 > 0 && $10 > 0 && $11 > 0 && $12 > 0 ) { print $1,$2,$9,$10,$11,$12  >> "'${dataPath_2017}'/batch_instance_just_selected.csv"; } }' ${dataPath_2017}/batch_instance.csv
 
-#echo "16218,16248,0.94,0.04,0.007589366603680791,0.007346051303289933" | csvlook
-#echo "16218,16248,0.94,0.04,0.007589366603680791,0.007346051303289933" | csvlook > $dataPath_2017/temp
+echo "1,2,3,4,5,6\n1621873234237,16248.8278953,0.9488747463622734,0.04,0.007589366603680791,0.007346051303289933"
+echo "=========================================="
+echo "1,2,3,4,5,6\n1621873234237,16248.8278953,0.9488747463622734,0.04,0.007589366603680791,0.007346051303289933" | csvlook
 
 ls -alh ./scriptsForDataPreprocess/
 
 #head -30 $dataPath_2017/batch_instance_just_selected.csv
 #head -30 $dataPath_2017/batch_instance_just_selected.csv | csvlook > $dataPath_2017/temp-batch_instance_selected_look
-head -30 $dataPath_2017/batch_instance_just_selected.csv > $dataPath_2017/temp
-#head -30 $dataPath_2017/batch_instance_just_selected.csv | csvlook
-#enca ${dataPath_2017}/batch_instance.csv
-#enca $dataPath_2017/batch_instance_just_selected.csv
-#enca $dataPath_2017/temp
-file --mime-encoding ${dataPath_2017}/*
-head $dataPath_2017/temp
-echo "============================================================"
-head -4500 $dataPath_2017/batch_instance-with_heads.csv | tail -60
-echo "============================================================"
-head -4500 $dataPath_2017/batch_instance-with_heads.csv | tail -60 | csvlook
-

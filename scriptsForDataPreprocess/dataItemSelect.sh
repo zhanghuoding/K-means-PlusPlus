@@ -42,5 +42,7 @@ head -30 $dataPath_2017/batch_instance_just_selected.csv > $dataPath_2017/temp
 file --mime-encoding ${dataPath_2017}/*
 head $dataPath_2017/temp
 echo "============================================================"
-head $dataPath_2017/batch_instance-with_heads.csv
+head -4500 $dataPath_2017/batch_instance-with_heads.csv | tail -60
+echo "============================================================"
+head -4500 $dataPath_2017/batch_instance-with_heads.csv | tail -60 | csvlook
 

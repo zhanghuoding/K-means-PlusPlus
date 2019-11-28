@@ -15,4 +15,4 @@ test_project:
         script:
                 - pwd
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect.sh
-                - ./scriptsForDataPreprocess/dataItemSelect.sh
+                #- ./scriptsForDataPreprocess/dataItemSelect.sh

@@ -15,7 +15,7 @@ processing_dataset_2017:
         script:
                 #- pwd
                 - chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
-                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
                 - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
 
@@ -26,6 +26,6 @@ processing_dataset_2018:
         script:
                 #- pwd
                 - chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
-                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh

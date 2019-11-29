@@ -20,7 +20,7 @@ do
 	i=`expr $i + 1`
 
 	currentIndex=-1
-	ranArray[1]=-2
+	ranArray[0]=-2
 	j=1
 	temp=-1
 	echo "" > $randomNumFile$i

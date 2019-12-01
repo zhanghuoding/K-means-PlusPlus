@@ -39,7 +39,6 @@ int main( int argc, char *argv[] )
 	 *This program do not need any parameters.
 	 */
 
-printf("ddddddddddddddddddddddddddd\n");
 	srand( (unsigned)time(NULL) );
 
 	sprintf( dataPath_2017, "%s/trace_201708", dataPath );

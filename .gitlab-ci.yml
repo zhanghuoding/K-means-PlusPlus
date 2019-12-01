@@ -20,6 +20,7 @@ processing_dataset_2017:
                 - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+                - rm -rf /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/subDataset_1
 
 processing_dataset_2018:
         stage: processing_dataset

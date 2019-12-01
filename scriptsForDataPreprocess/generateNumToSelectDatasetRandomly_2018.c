@@ -20,8 +20,8 @@
 #define TIMES 10
 
 
-//char *  dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment";//path of the dataset.
-char *  dataPath=".";//path of the dataset.
+char *  dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment";//path of the dataset.
+//char *  dataPath=".";//path of the dataset.
 
 char dataPath_2017[GENERAL_SIZE]={'\0'};
 char dataPath_2018[GENERAL_SIZE]={'\0'};

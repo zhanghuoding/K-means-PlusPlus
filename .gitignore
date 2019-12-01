@@ -10,3 +10,6 @@
 *.o
 *.csv
 record
+generateNumToSelectDatasetRandomly_2017
+generateNumToSelectDatasetRandomly_2018
+*.swp

@@ -1,5 +1,6 @@
 #/bin/bash
 
+<<-!
 dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment"
 dataPath_2017=$dataPath"/trace_201708"
 dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
@@ -52,3 +53,9 @@ do
 	done
 	unset ranArray
 done
+!
+
+gcc -std=c99 -g -w -o generateNumToSelectDatasetRandomly_2017 generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
+
+
+#awk 'BEGIN{ basis=1201019097; temp = 0;} {if ($1 >= basis || $1 <= temp) print NR"\tNum = "$1;} END{ print NR}' /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_20170/randomNumFold/set_1

@@ -64,7 +64,6 @@ int main( int argc, char *argv[] )
 	while( i <= TIMES )
 	{
 		currentIndex = 1;
-		ranArray[0] = -2;
 		j = 1;
 		temp = -1;
 		memset( randomNumFileOutput, 0, GENERAL_SIZE);
@@ -87,6 +86,7 @@ int main( int argc, char *argv[] )
 		}
 		//setbuf( output, NULL );
 
+		ranArray[0] = MAXNUM;
 		while( j <= MAXNUM )
 		{
 			//temp = rand() / ( RAND_MAX + 0.5 ) * MAXNUM;

@@ -70,7 +70,6 @@ int main( int argc, char *argv[] )
 	while( i <= TIMES )
 	{
 		currentIndex = 1;
-		ranArray[0] = -2;
 		j = 1;
 		temp = -1;
 		memset( randomNumFileOutput, 0, GENERAL_SIZE);
@@ -93,6 +92,7 @@ int main( int argc, char *argv[] )
 		}
 		//setbuf( output, NULL );
 
+		ranArray[0] = TOTALDATANUM;
 		while( j <= TOTALDATANUM )
 		{
 			//temp = rand() / ( RAND_MAX + 0.5 ) * MAXNUM;
@@ -146,7 +146,6 @@ int main( int argc, char *argv[] )
 		j = 1;
 		ind = 0;
 		temp = -1;
-		ranArray[0] = -2;
 
 		memset( randomNumFileOutput, 0, GENERAL_SIZE);
 		sprintf( randomNumFileOutput, "%s", randomNumFile );
@@ -160,6 +159,7 @@ int main( int argc, char *argv[] )
 			exit( 1 );
 		}
 
+		ranArray[0] = TOTALDATANUM;
 		while( j <= INCREMENTAL_DATANUM )
 		{
 			//temp = rand() / ( RAND_MAX + 0.5 ) * MAXNUM;
@@ -192,7 +192,6 @@ int main( int argc, char *argv[] )
 			sprintf( randomNumFile, "%s/set_%d", randomNumFold, i );
 		
 			currentIndex = 1;
-			ranArray[0] = -2;
 			j = 1;
 			temp = -1;
 
@@ -216,6 +215,7 @@ int main( int argc, char *argv[] )
 			}
 			//setbuf( output, NULL );
 	
+			ranArray[0] = INCREMENTAL_DATANUM;
 			while( j <= INCREMENTAL_DATANUM )
 			{
 				//temp = rand() / ( RAND_MAX + 0.5 ) * MAXNUM;

@@ -58,4 +58,4 @@ done
 gcc -std=c99 -g -w -o generateNumToSelectDatasetRandomly_2017 generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
 
 
-#awk 'BEGIN{ basis=1201019097; temp = 0;} {if ($1 >= basis || $1 <= temp) print NR"\tNum = "$1;} END{ print NR}' /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_20170/randomNumFold/set_1
+#awk 'BEGIN{ basis=1201019097; temp = 0;} {if ($1 >= basis || $1 <= temp) print NR"\tNum = "$1;} END{ print NR}' /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/randomNumFold/set_1

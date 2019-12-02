@@ -11,7 +11,7 @@ stages:
 processing_dataset_2017:
         stage: processing_dataset
         tags:
-                - S4-C
+                - S4-B
         script:
                 #- pwd
                 - chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh

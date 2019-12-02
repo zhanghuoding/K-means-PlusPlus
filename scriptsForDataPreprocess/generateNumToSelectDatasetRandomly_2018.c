@@ -120,6 +120,17 @@ int main( int argc, char *argv[] )
 		
 		while( i <= TIMES )
 		{
+			if( m > 1 )
+			{
+				memset( buffer, 0, BUFFER_SIZE );
+				sprintf( buffer, "cp %s/randomNumFold/subDataset_1/set_%d  %s/randomNumFold/subDataset_%d/", dataPath_2018, i, dataPath_2018, m );
+				if( system( buffer ) )
+				{
+					perror( buffer );
+					exit( 1 );
+				}
+			}
+
 			sprintf( randomNumFile, "%s/set_%d", randomNumFold, i );
 		
 			currentIndex = 1;
@@ -175,6 +186,7 @@ int main( int argc, char *argv[] )
 			memset( ranArray, 0, sizeof(unsigned long) * ( TOTALDATANUM + 1 ) );
 			i += 1;
 		}
+		m++;
 	}
 
 	/*

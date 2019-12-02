@@ -31,7 +31,7 @@ char randomNumFileOutput[GENERAL_SIZE] = {'\0'};
 
 char buffer[BUFFER_SIZE]={'\0'};
 
-unsigned long ranArray[TOTALDATANUM + 1]={0};
+unsigned long ranArray[MAXNUM + 1]={0};
 
 int main( int argc, char *argv[] )
 {
@@ -112,7 +112,7 @@ int main( int argc, char *argv[] )
 			}
 		}
 		fclose( output );
-		memset( ranArray, 0, sizeof(unsigned long) * ( TOTALDATANUM + 1 ) );
+		memset( ranArray, 0, sizeof(unsigned long) * ( MAXNUM + 1 ) );
 		i += 1;
 	}
 

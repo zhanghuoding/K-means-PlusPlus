@@ -32,6 +32,6 @@ processing_dataset_2018:
                 #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 #- rm -f ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
-                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh

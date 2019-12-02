@@ -18,6 +18,7 @@
 #define INCREMENTAL_DATANUM 190760
 #define SUBNUM 10
 #define TIMES 10
+#define SUB_TIMES 5
 
 
 char *  dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment";//path of the dataset.
@@ -44,21 +45,11 @@ int main( int argc, char *argv[] )
 	sprintf( dataPath_2017, "%s/trace_201708", dataPath );
 	sprintf( dataPath_2018, "%s/alibaba_clusterdata_v2018", dataPath );
 
-	/*
-	 *first we will split dataset 2018 to 10 sets on the 1201019097.
-	 *this will be used to creat 10 models and the times for each process will be the contrast.
-	 */
-	
-	sprintf( randomNumFold, "%s/randomNumFold/allSamples", dataPath_2018 );
-	sprintf( randomNumFile, "%s/set_", randomNumFold );
 
-	memset( buffer, 0, BUFFER_SIZE );
-	sprintf( buffer, "mkdir -p %s", randomNumFold );
-	if ( system( buffer ) )
-	{
-		perror( buffer );
-		exit( 1 );
-	}
+	/*
+	 *firs  we will select 10 times and 190760 samples for each time.
+	 * we also split the sub-dataset to 10 groups.
+	 */
 
 	int currentIndex= 1 ;
 	int i = 1;
@@ -66,67 +57,7 @@ int main( int argc, char *argv[] )
 	int j = 1;
 	unsigned long ind = 0;
 	unsigned long temp = -1;
-
-	while( i <= TIMES )
-	{
-		currentIndex = 1;
-		j = 1;
-		temp = -1;
-		memset( randomNumFileOutput, 0, GENERAL_SIZE);
-		sprintf( randomNumFileOutput, "%s%d", randomNumFile, i );
-		remove( randomNumFileOutput );
-		creat( randomNumFileOutput, 0755 );
 	
-		//memset( buffer, 0, BUFFER_SIZE );
-		//sprintf( buffer, "echo \"\" > %s",randomNumFileOutput );
-		//if ( system( buffer ) )
-		//{
-		//	perror( buffer );
-		//	exit( 1 );
-		//}
-		FILE *output = NULL;
-		if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
-		{
-			perror( "Open data file" );
-			exit( 1 );
-		}
-		//setbuf( output, NULL );
-
-		ranArray[0] = TOTALDATANUM;
-		while( j <= TOTALDATANUM )
-		{
-			//temp = rand() / ( RAND_MAX + 0.5 ) * MAXNUM;
-			temp = rand() % TOTALDATANUM;
-			//printf("RAND_MAX = %d, \tand temp = %d \n", RAND_MAX, temp );
-
-			ind = 0;
-			for( ind = 0; ind < currentIndex; ind++ )
-			{
-				if( ! ( temp ^  ranArray[ind] ) )
-				{
-					temp = -1;
-					break;
-				}
-				
-			}
-			if( temp ^ -1 )
-			{
-				ranArray[currentIndex++] = temp;
-				fprintf( output, "%d\n", temp );
-				temp = -1;
-				j++;
-			}
-		}
-		fclose( output );
-		memset( ranArray, 0, sizeof(unsigned long) * ( TOTALDATANUM + 1 ) );
-		i += 1;
-	}
-
-	/*
-	 * the we will select 10 times and 190760 samples for each time.
-	 * we also split the sub-dataset to 10 groups.
-	 */
-
 	m = 1;
 	while( m <= SUBNUM )
 	{
@@ -244,6 +175,85 @@ int main( int argc, char *argv[] )
 			memset( ranArray, 0, sizeof(unsigned long) * ( TOTALDATANUM + 1 ) );
 			i += 1;
 		}
+	}
+
+	/*
+	 *then we will split dataset 2018 to 10 sets on the 1201019097.
+	 *this will be used to creat 10 models and the times for each process will be the contrast.
+	 */
+	
+	sprintf( randomNumFold, "%s/randomNumFold/allSamples", dataPath_2018 );
+	sprintf( randomNumFile, "%s/set_", randomNumFold );
+
+	memset( buffer, 0, BUFFER_SIZE );
+	sprintf( buffer, "mkdir -p %s", randomNumFold );
+	if ( system( buffer ) )
+	{
+		perror( buffer );
+		exit( 1 );
+	}
+
+	currentIndex= 1 ;
+	i = 1;
+	m = 1;
+	j = 1;
+	ind = 0;
+	temp = -1;
+
+	//while( i <= TIMES )
+	while( i <= SUB_TIMES )
+	{
+		currentIndex = 1;
+		j = 1;
+		temp = -1;
+		memset( randomNumFileOutput, 0, GENERAL_SIZE);
+		sprintf( randomNumFileOutput, "%s%d", randomNumFile, i );
+		remove( randomNumFileOutput );
+		creat( randomNumFileOutput, 0755 );
+	
+		//memset( buffer, 0, BUFFER_SIZE );
+		//sprintf( buffer, "echo \"\" > %s",randomNumFileOutput );
+		//if ( system( buffer ) )
+		//{
+		//	perror( buffer );
+		//	exit( 1 );
+		//}
+		FILE *output = NULL;
+		if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
+		{
+			perror( "Open data file" );
+			exit( 1 );
+		}
+		//setbuf( output, NULL );
+
+		ranArray[0] = TOTALDATANUM;
+		while( j <= TOTALDATANUM )
+		{
+			//temp = rand() / ( RAND_MAX + 0.5 ) * MAXNUM;
+			temp = rand() % TOTALDATANUM;
+			//printf("RAND_MAX = %d, \tand temp = %d \n", RAND_MAX, temp );
+
+			ind = 0;
+			for( ind = 0; ind < currentIndex; ind++ )
+			{
+				if( ! ( temp ^  ranArray[ind] ) )
+				{
+					temp = -1;
+					break;
+				}
+				
+			}
+			if( temp ^ -1 )
+			{
+				ranArray[currentIndex++] = temp;
+				fprintf( output, "%d\n", temp );
+				temp = -1;
+				j++;
+			}
+		}
+		fclose( output );
+		memset( ranArray, 0, sizeof(unsigned long) * ( TOTALDATANUM + 1 ) );
+		i += 1;
 	}
 
 	return 0;

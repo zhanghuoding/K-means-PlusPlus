@@ -1,7 +1,7 @@
 //################################################################
 //#  author   :Bobo Wang                                         #
 //#  time     :2019-08-09                                        #
-//#  modify   :2019-08-25                                        #
+//#  modify   :2019-12-05                                        #
 //#  site     :Yunnan University                                 #
 //#  e-mail   :wangbobochn@gmail.com                             #
 //################################################################
@@ -45,6 +45,7 @@ char logFile[GENERAL_SIZE]={'\0'};//path + file name of log file.
 char logBuffer[GENERAL_SIZE]={'\0'};
 char dataClusteredOutputFile[GENERAL_SIZE] = {'\0'};//The result of data clustering.
 char clusterCenterOutputFile[GENERAL_SIZE] = {'\0'};//The result of cluster centers.
+char fileRootPath[GENERAL_SIZE] = {'\0'};//The path of the input file and output file.
 char dataRowBuffer[BUFFER_SIZE]={'\0'};
 
 //pthread_t cp_thread;//线程句柄
@@ -102,15 +103,21 @@ int main( int argc, char *argv[] )
 	columnNumberClusterOn = atoi(argv[2]);
 	clusterNumber = atoi(argv[3]);
 
+	char *writeBuffer[BUFFER_SIZE];
+	char pathTemp[GENERAL_SIZE] = {'\0'};
+	sprintf( pathTemp, "%s", dataFilePath );
+	pathTemp[ lastIndexOf( pathTemp, "/" ) ] = '\0';
+	sprintf( dataClusteredOutputFile, "%s/clustered_column_%d_based-%s", pathTemp, columnNumberClusterOn, dataFilePath + lastIndexOf( dataFilePath, "/" ) + 1 );
+	sprintf( clusterCenterOutputFile, "%s/cluster_center_column_%d-based_%s", pathTemp, columnNumberClusterOn, dataFilePath + lastIndexOf( dataFilePath, "/" ) + 1 );
+
+	sprintf( logFilePath, "%s", pathTemp );
+
 	infinityDouble = 1.0 / 0.0;
         //initialize
         init();
 	//Start classify data.
 	k_means_pp( data, dataArraySizeCurrent, clusterNumber );
 
-	char *writeBuffer[BUFFER_SIZE];
-	sprintf( dataClusteredOutputFile, "./clustered_column_%d_based-%s", columnNumberClusterOn, dataFilePath + lastIndexOf( dataFilePath, "/" ) + 1 );
-	sprintf( clusterCenterOutputFile, "./cluster_center_column_%d-based_%s", columnNumberClusterOn, dataFilePath + lastIndexOf( dataFilePath, "/" ) + 1 );
 	outputLog("Writing output file, this may take some time, please be patient...");
 
 	FILE *dataClusteredOutput=NULL;
@@ -143,8 +150,8 @@ int main( int argc, char *argv[] )
 	printf("\033[?25l");
         while(!feof(fdata))
         {
-		if( ! ( currentSampleNumber % 200 ) )
-			printf("\r\033[kWriting output file, this may take some time, \033[;34;1m%5.2f%%\033[0m complete currently, please be patient...   ", 100 * ( currentSampleNumber / totalSampleNumber ) );
+		//if( ! ( currentSampleNumber % 200 ) )
+		//	printf("\r\033[kWriting output file, this may take some time, \033[;34;1m%5.2f%%\033[0m complete currently, please be patient...   ", 100 * ( currentSampleNumber / totalSampleNumber ) );
 		currentSampleNumber += 1;
 		splitIndex=-1;
 		value=0;
@@ -535,7 +542,7 @@ double *k_means( DataNodePtr dataArray, int dataArrayLength, ClusterCenterNodePt
 	do
 	{
 		//Display the prompt message.
-		printf("\r\033[kExecuting the %dth loop of K-means++ algorithm, please wait...", ++loopTimeCurrent);
+		//printf("\r\033[kExecuting the %dth loop of K-means++ algorithm, please wait...", ++loopTimeCurrent);
 		
 		ind = 1;
 		tempDis = 0;

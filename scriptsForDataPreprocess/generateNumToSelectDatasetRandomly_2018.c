@@ -1,3 +1,12 @@
+//################################################################
+//#  author   :Bobo Wang                                         #
+//#  time     :2019-11-20                                        #
+//#  modify   :2019-12-04                                        #
+//#  site     :Yunnan University                                 #
+//#  e-mail   :wangbobochn@gmail.com                             #
+//################################################################
+
+
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -58,6 +67,7 @@ int main( int argc, char *argv[] )
 	unsigned long ind = 0;
 	unsigned long temp = -1;
 	
+	/*
 	m = 1;
 	while( m <= SUBNUM )
 	{
@@ -129,6 +139,7 @@ int main( int argc, char *argv[] )
 					perror( buffer );
 					exit( 1 );
 				}
+				continue;
 			}
 
 			sprintf( randomNumFile, "%s/set_%d", randomNumFold, i );
@@ -188,6 +199,7 @@ int main( int argc, char *argv[] )
 		}
 		m++;
 	}
+	*/
 
 	/*
 	 *then we will split dataset 2018 to 10 sets on the 1201019097.

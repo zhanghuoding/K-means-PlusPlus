@@ -29,7 +29,7 @@ Welcom!
 	6. If there are any problems with the program, you can use the GDB tool to debug it directly.
 
 	7. The program outputs three files, one is the log file "exe-cluster-log.log"; one is the data
-	   file after the clustering with CSV format, named "clustered_column_*-based_"+ original
+	   file after the clustering with CSV format, named "clustered_column_*_based_"+ original
 	   file name,the "*" represents the column number of this operation, and a new column will 
 	   be added in the copy file of original file and the new column located after grouped column,
 	   and this column indicates the clustering number of this sample. The last file 
@@ -44,7 +44,7 @@ Welcom!
 	   categories.
 	   In this README.md file, all use format CSV file viewer named csvlook and the file processing
 	   tool named head under Linux to view the file contents, like the following:
-	   $head ./clustered_column_1-based_exampleData.csv | csvlook
+	   $head ./clustered_column_1_based_exampleData.csv | csvlook
 
 	   Forexample, original data file "exampleData.csv" like the following:
 	   
@@ -59,7 +59,7 @@ Welcom!
 	   | 30 | 1.02 | 0.05 |               0.031… |               0.030… |
 	   
 	   Executing command : $./k_meanspp  ./exampleData.csv 1 20
-	   We got a new file "clustered_column_1-based_exampleData.csv" like the following:
+	   We got a new file "clustered_column_1_based_exampleData.csv" like the following:
 	   The second column is the cluster class number of the first column data,with a total 
 	   of 20 classes.
 	   
@@ -74,7 +74,7 @@ Welcom!
 	   | 30 | 2 | 1.02 | 0.05 |               0.031… |               0.030… |
 	   
 	   Executing command : $./k_meanspp  ./exampleData.csv 3 20
-	   We got a new file "clustered_column_3-based_exampleData.csv" like the following:
+	   We got a new file "clustered_column_3_based_exampleData.csv" like the following:
 	   The forth column is the cluster class number of the third column data,with a total 
 	   of 20 classes.
 	   
@@ -89,7 +89,7 @@ Welcom!
 	   | 30 | 1.02 | 0.05 | True |               0.031… |               0.030… |
 	   
 	   Executing command : $./k_meanspp  ./exampleData.csv 5 20
-	   We got a new file "clustered_column_5-based_exampleData.csv" like the following:
+	   We got a new file "clustered_column_5_based_exampleData.csv" like the following:
 	   The sixth column is the cluster class number of the fifth column data,with a total 
 	   of 20 classes.
 	   
@@ -104,7 +104,7 @@ Welcom!
 	   | 30 | 1.02 | 0.05 |               0.031… |               0.030… | 11 |
 	   
 	   Executing command : $./k_meanspp  ./exampleData.csv 3 20
-	   so we also got a new file "cluster_center_column_3-based_exampleData.csv" like the following:
+	   so we also got a new file "cluster_center_column_3_based_exampleData.csv" like the following:
 	   This file records the number of the 20 clusters,the cluster center value,and the 
 	   number os samples belonging to the cluster.
 	   

@@ -36,9 +36,9 @@ while [ $i -le $columnNum ]
 do
 	$currentPath/k_meanspp $dataPath_2017/batch_instance-effective.csv.backup $j $clusterNum
 	rm -f $dataPath_2017/batch_instance-effective.csv.backup
-	cp ${dataPath_2017}/clustered_column_$j-based-batch_instance-effective.csv.backup $dataPath_2017/batch_instance-effective.csv.backup
-	mv ${dataPath_2017}/clustered_column_$j-based-batch_instance-effective.csv.backup $dataPath_2017/midstFile/
-	head -300 $dataPath_2017/midstFile/clustered_column_$j-based-batch_instance-effective.csv.backup >  $dataPath_2017/midstFile/clustered_column_$j-based-batch_instance-effective.csv.backup-head-300.csv
+	cp ${dataPath_2017}/clustered_column_$j_based-batch_instance-effective.csv.backup $dataPath_2017/batch_instance-effective.csv.backup
+	mv ${dataPath_2017}/clustered_column_$j_based-batch_instance-effective.csv.backup $dataPath_2017/midstFile/
+	head -300 $dataPath_2017/midstFile/clustered_column_$j_based-batch_instance-effective.csv.backup >  $dataPath_2017/midstFile/clustered_column_$j_based-batch_instance-effective.csv.backup-head-300.csv
 	i=`expr $i + 1`
 	j=`expr $j + 2`
 done

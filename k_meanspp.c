@@ -39,7 +39,7 @@ typedef struct clusterCenterNode
 	int number;//the number of sample which belong to current cluster center.
 }ClusterCenterNode, *ClusterCenterNodePtr;
 
-char * logFilePath=".";//The path of log file.
+char logFilePath[GENERAL_SIZE]={'\0'};//The path of log file.
 char * logFileName="/exe-cluster-log.log";//The file name.
 char logFile[GENERAL_SIZE]={'\0'};//path + file name of log file.
 char logBuffer[GENERAL_SIZE]={'\0'};

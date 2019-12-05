@@ -87,7 +87,6 @@ int main( int argc, char *argv[] )
 			sprintf( randomNumFileOutput, "%s%d", randomNumFile, fileNum );
 			if( access( randomNumFileOutput, F_OK ) || access( randomNumFileOutput, R_OK ) )
 			{//if file does not exists or un-readable.
-				i = fileNum;
 				fileNum = -1;
 				continue;
 			}
@@ -132,6 +131,7 @@ int main( int argc, char *argv[] )
 			}
 			else
 			{
+				currentIndex= 1;
 				continue;
 			}
 		}

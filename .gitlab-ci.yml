@@ -16,27 +16,27 @@ stages:
 #                - S4-B
 #        script:
 #                #- pwd
-#                - chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
+#                #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
 #                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
 #                #- rm -f ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017
 #                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
 #                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017
 #                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
 #                #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
-#
+
 processing_dataset_2018:
         stage: processing_dataset
         tags:
                 - G1-C
         script:
                 #- pwd
-#                - chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
-#                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
-#                #- rm -f ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
+                #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
+                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
+                #- rm -f ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
-#                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
-#                #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 2
+                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+                #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
 
 
 ##2019-12-05-01

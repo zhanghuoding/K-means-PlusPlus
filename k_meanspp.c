@@ -1,7 +1,7 @@
 //################################################################
 //#  author   :Bobo Wang                                         #
 //#  time     :2019-08-09                                        #
-//#  modify   :2019-12-05                                        #
+//#  modify   :2019-12-06                                        #
 //#  site     :Yunnan University                                 #
 //#  e-mail   :wangbobochn@gmail.com                             #
 //################################################################
@@ -108,7 +108,7 @@ int main( int argc, char *argv[] )
 	sprintf( pathTemp, "%s", dataFilePath );
 	pathTemp[ lastIndexOf( pathTemp, "/" ) ] = '\0';
 	sprintf( dataClusteredOutputFile, "%s/clustered_column_%d_based-%s", pathTemp, columnNumberClusterOn, dataFilePath + lastIndexOf( dataFilePath, "/" ) + 1 );
-	sprintf( clusterCenterOutputFile, "%s/cluster_center_column_%d-based_%s", pathTemp, columnNumberClusterOn, dataFilePath + lastIndexOf( dataFilePath, "/" ) + 1 );
+	sprintf( clusterCenterOutputFile, "%s/cluster_center_column_%d_based-%s", pathTemp, columnNumberClusterOn, dataFilePath + lastIndexOf( dataFilePath, "/" ) + 1 );
 
 	sprintf( logFilePath, "%s", pathTemp );
 

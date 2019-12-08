@@ -34,12 +34,13 @@ processing_dataset_2018:
                 #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 #- rm -f ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
                 #- gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
-                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 4 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset-log.log
+                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 3 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset-log.log
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
                 - mkdir -p /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look
                 - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/batch_instance-effective.csv > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/batch_instance-effective.csv
                 - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/batch_instance-usable.csv > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/batch_instance-usable.csv
+                - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/batch_instance.csv > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/batch_instance.csv
                 - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/midstFile/clustered_column_1_based-batch_instance-effective.csv.backup > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/clustered_column_1_based-batch_instance-effective.csv.backup
                 - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/midstFile/clustered_column_3_based-batch_instance-effective.csv.backup > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/clustered_column_3_based-batch_instance-effective.csv.backup
                 - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/midstFile/clustered_column_5_based-batch_instance-effective.csv.backup > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/clustered_column_5_based-batch_instance-effective.csv.backup

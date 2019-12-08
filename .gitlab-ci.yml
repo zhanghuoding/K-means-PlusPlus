@@ -33,10 +33,11 @@ processing_dataset_2018:
                 #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 #- rm -f ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
-                - rm -f /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_log.log
-                - touch /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_log.log
+                - ls -alh /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
+                - rm -f /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset-log.log
+                - touch /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset-log.log
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 4 > /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_log.log
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 4 > /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset-log.log
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
 

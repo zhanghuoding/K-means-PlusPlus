@@ -33,6 +33,7 @@ processing_dataset_2018:
                 #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 #- rm -f ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018
+                - ls -alh /shared/Datasets/bobowang/For_this_Experiment
                 - ls -alh /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
                 - rm -f /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset-log.log
                 - touch /shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset-log.log

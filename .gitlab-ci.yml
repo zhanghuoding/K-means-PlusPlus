@@ -36,7 +36,7 @@ processing_dataset_2018:
                 #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 2 8 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 9 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
                 - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
                 - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 1 2 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log

@@ -148,7 +148,7 @@ void child_thread(char * fn)
 			fileNum = -1;
 			if( currentIndex >= 5 )
 			{
-				currentIndex -= 4;
+				currentIndex -= 2;
 				j = currentIndex;
 				remove( randomNumFileOutput );
 				creat( randomNumFileOutput, 0755 );

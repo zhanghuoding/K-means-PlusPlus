@@ -8,23 +8,23 @@ image:
 stages:
         - processing_dataset
 
-##2019-11-29-01
-#processing_dataset_2017:
-#        stage: processing_dataset
-#        tags:
-#                - S4-C
-#                #- S4-B
-#        script:
-#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
-#                #- pwd
-#                #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
-#                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
-#                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
-#                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 2 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
+#2019-11-29-01
+processing_dataset_2017:
+        stage: processing_dataset
+        tags:
+                - S4-C
+                #- S4-B
+        script:
+                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
+                #- pwd
+                #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
+                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
+                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 2 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
 
-#                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
-#                #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
-#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
+                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+                #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
 
 processing_dataset_2018:
         stage: processing_dataset
@@ -32,17 +32,13 @@ processing_dataset_2018:
                 - G1-C
         script:
                 - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
-                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
                 #- pwd
                 #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
                 #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
-                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 2 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
                 - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 1 2 3 4 5 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
                 - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 6 7 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
                 - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
-                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
 

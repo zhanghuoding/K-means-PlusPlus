@@ -24,6 +24,7 @@ stages:
 
 #                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
 #                #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
 
 processing_dataset_2018:
         stage: processing_dataset
@@ -38,11 +39,10 @@ processing_dataset_2018:
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
                 - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 2 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 1 2 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 3 4 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 5 6 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 7 8 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 1 2 3 4 5 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 6 7 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
+                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
+                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
 
@@ -60,6 +60,7 @@ processing_dataset_2018:
 #                - ls -alh
 #                - chmod +x ./dataItemSelect_2017.sh
 #                - ./dataItemSelect_2017.sh
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
 #
 #select_dataset_2018:
 #        stage: processing_dataset
@@ -73,6 +74,7 @@ processing_dataset_2018:
 #                - ls -alh
 #                - chmod +x ./dataItemSelect_2018.sh
 #                - ./dataItemSelect_2018.sh
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
 
 ##2019-12-08-001
 #look_for_dataset_2018:
@@ -90,3 +92,4 @@ processing_dataset_2018:
 #                - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/midstFile/clustered_column_5_based-batch_instance-effective.csv.backup > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/clustered_column_5_based-batch_instance-effective.csv.backup
 #                - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/midstFile/clustered_column_7_based-batch_instance-effective.csv.backup > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/clustered_column_7_based-batch_instance-effective.csv.backup
 #                - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/midstFile/clustered_column_9_based-batch_instance-effective.csv.backup > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/clustered_column_9_based-batch_instance-effective.csv.backup
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018

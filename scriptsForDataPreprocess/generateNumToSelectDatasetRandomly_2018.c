@@ -1,7 +1,7 @@
 //################################################################
 //#  author   :Bobo Wang                                         #
 //#  time     :2019-11-20                                        #
-//#  modify   :2019-12-09                                        #
+//#  modify   :2019-12-10                                        #
 //#  site     :Yunnan University                                 #
 //#  e-mail   :wangbobochn@gmail.com                             #
 //################################################################
@@ -55,18 +55,20 @@ int main( int argc, char *argv[] )
 		int argv_i = 1;
 		while( argv_i < argc )
 		{
-			if (pthread_create(threads + (thread_count++), NULL, (void *)child_thread, (void *)argv[argv_i++] ) != 0)
+			if( pthread_create(threads + (thread_count++), NULL, (void *)child_thread, (void *)argv[argv_i++] ) )
 			{
 				printf("Create thread Failed!\n");
-				exit( 1 );
+				return 1;
 			}
-			pthread_join( threads[ thread_count - 1 ], NULL );
 		}
+		argv_i = 0;
+		while( argv_i < thread_count )
+			pthread_join( threads[ argv_i++ ], NULL );
 	}
 	else
 	{
 		printf("Please input atleast onr parameter!\n");
-		exit( 1 );
+		return 1;
 	}
 	return 0;
 }
@@ -80,7 +82,14 @@ void child_thread(char * fn)
 	
 	char buffer[BUFFER_SIZE]={'\0'};
 	
-	unsigned long ranArray[TOTALDATANUM + 1]={0};
+	unsigned long *ranArray = NULL;
+	if ( ! ( ranArray = malloc( sizeof(unsigned long) * ( TOTALDATANUM + 1 ) ) ) )
+	{
+		memset( buffer, 0, BUFFER_SIZE );
+		sprintf( buffer, "Allocate memery in thread %d\n", fileNum );
+		perror( buffer );
+		return 2;
+	}
 
 	/*
 	 *This program do not need any parameters.
@@ -115,7 +124,7 @@ void child_thread(char * fn)
 		if ( system( buffer ) )
 		{
 			perror( buffer );
-			exit( 1 );
+			return 1;
 		}
 	
 		currentIndex= 1 ;
@@ -132,7 +141,7 @@ void child_thread(char * fn)
 		if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
 		{
 			perror( "Open data file" );
-			exit( 1 );
+			return 1;
 		}
 
 		ranArray[0] = TOTALDATANUM;
@@ -172,7 +181,7 @@ void child_thread(char * fn)
 				if( system( buffer ) )
 				{
 					perror( buffer );
-					exit( 1 );
+					return 1;
 				}
 				continue;
 			}
@@ -193,12 +202,12 @@ void child_thread(char * fn)
 			//if ( system( buffer ) )
 			//{
 			//	perror( buffer );
-			//	exit( 1 );
+			//	return 1;
 			//}
 			if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
 			{
 				perror( "Open data file" );
-				exit( 1 );
+				return 1;
 			}
 			//setbuf( output, NULL );
 	
@@ -248,7 +257,7 @@ void child_thread(char * fn)
 	if ( system( buffer ) )
 	{
 		perror( buffer );
-		exit( 1 );
+		return 1;
 	}
 
 	currentIndex= 1;
@@ -282,7 +291,7 @@ void child_thread(char * fn)
 				memset( buffer, 0, BUFFER_SIZE );
 				sprintf( buffer, "Open file %s", randomNumFileOutput );
 				perror( buffer );
-				exit( 1 );
+				return 1;
 			}
 			char readNum[ELEMENT_LENGTH]={'\0'};
 			while( !feof(fdata) )
@@ -306,7 +315,7 @@ void child_thread(char * fn)
 				if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
 				{
 					perror( "Open data file" );
-					exit( 1 );
+					return 1;
 				}
 				int t = 1;
 				while( t < currentIndex )
@@ -339,13 +348,13 @@ void child_thread(char * fn)
 			//if ( system( buffer ) )
 			//{
 			//	perror( buffer );
-			//	exit( 1 );
+			//	return 1;
 			//}
 		}
 		if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
 		{
 			perror( "Open data file" );
-			exit( 1 );
+			return 1;
 		}
 		//setbuf( output, NULL );
 

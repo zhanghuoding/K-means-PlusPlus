@@ -20,7 +20,7 @@ processing_dataset_2017:
                 #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
                 #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
                 - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 2 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
+                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 1 2 3 4 5 6 7 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
 
                 #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
                 #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh

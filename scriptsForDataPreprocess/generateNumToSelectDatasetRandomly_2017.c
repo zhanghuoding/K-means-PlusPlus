@@ -1,7 +1,7 @@
 //################################################################
 //#  author   :Bobo Wang                                         #
 //#  time     :2019-11-20                                        #
-//#  modify   :2019-12-10                                        #
+//#  modify   :2019-12-11                                        #
 //#  site     :Yunnan University                                 #
 //#  e-mail   :wangbobochn@gmail.com                             #
 //################################################################
@@ -19,6 +19,14 @@
 #include <unistd.h>
 
 #define MAX_THREAD_NUM 200
+#define MOVE_THRESHOLD 1000//When the array has MOVE_THRESHOLD blank,it will sort memory.
+#define NULL_ARRAY -2
+#define NULL_RANDOM -1
+#define RETURN_1 1
+#define RETURN_2 2
+#define RETURN_0 0
+#define RETURN_P1 -1
+#define RETURN_P2 -2
 
 #define BUFFER_SIZE 1024
 #define ARRAY_SIZE_ADDED 200
@@ -32,8 +40,8 @@
 #define TIMES 10
 
 
-char *  dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment";//path of the dataset.
-//char *  dataPath=".";//path of the dataset.
+//char *  dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment";//path of the dataset.
+char *  dataPath=".";//path of the dataset.
 
 int thread_count=0;//线程计数器
 pthread_t threads[MAX_THREAD_NUM];
@@ -44,6 +52,7 @@ char dataPath_2017[GENERAL_SIZE]={'\0'};
 char dataPath_2018[GENERAL_SIZE]={'\0'};
 
 void child_thread(char*);
+void arrangeArray( unsigned long *, int, unsigned long );
 
 int main( int argc, char *argv[] )
 {
@@ -58,7 +67,7 @@ int main( int argc, char *argv[] )
 			if( pthread_create(threads + (thread_count++), NULL, (void *)child_thread, (void *)argv[argv_i++] ) )
 			{
 				printf("Create thread Failed!\n");
-				return 1;
+				return RETURN_1;
 			}
 		}
 		argv_i = 0;
@@ -68,9 +77,9 @@ int main( int argc, char *argv[] )
 	else
 	{
 		printf("Please input atleast onr parameter!\n");
-		return 1;
+		return RETURN_1;
 	}
-	return 0;
+	return RETURN_0;
 }
 
 void child_thread(char * fn)
@@ -83,13 +92,17 @@ void child_thread(char * fn)
 	char buffer[BUFFER_SIZE]={'\0'};
 
 	unsigned long *ranArray = NULL;
-	if ( ! ( ranArray = malloc( sizeof(unsigned long) * ( MAXNUM + 1 ) ) ) )
+	if ( ! ( ranArray = malloc( sizeof(unsigned long) * ( MAXNUM ) ) ) )
 	{
 		memset( buffer, 0, BUFFER_SIZE );
 		sprintf( buffer, "Allocate memery in thread %d\n", fileNum );
 		perror( buffer );
-		return 2;
+		return RETURN_2;
 	}
+	int ss = 0;
+	for( ss = 0; ss < MAXNUM; ss++ )
+		ranArray[ ss ] = ss;
+	unsigned long arraySize = MAXNUM;
 
 	/*
 	 *This program need one or zero parameters.
@@ -105,15 +118,13 @@ void child_thread(char * fn)
 	if ( system( buffer ) )
 	{
 		perror( buffer );
-		return 1;
+		return RETURN_1;
 	}
 
-	int currentIndex= 1;
 	int i = 1;
-	int m = 1;
-	int j = 1;
+	int j = 0;
 	unsigned long ind = 0;
-	unsigned long temp = -1;
+	unsigned long temp = NULL_RANDOM;
 
 	FILE *output = NULL;
 
@@ -121,14 +132,15 @@ void child_thread(char * fn)
 	//while( i <= TIMES )
 	while( i == fileNum )
 	{
-		if( fileNum > 0 && fileNum <= TIMES )
+		//if( fileNum > 0 && fileNum <= TIMES )
+		if( fileNum > 0 )
 		{
 			i = fileNum;
 			memset( randomNumFileOutput, 0, GENERAL_SIZE);
 			sprintf( randomNumFileOutput, "%s%d", randomNumFile, fileNum );
 			if( access( randomNumFileOutput, F_OK ) || access( randomNumFileOutput, R_OK ) )
 			{//if file does not exists or un-readable.
-				fileNum = -1;
+				fileNum = NULL_RANDOM;
 				//#############################
 				goto goon;
 				//#############################
@@ -140,7 +152,17 @@ void child_thread(char * fn)
 				memset( buffer, 0, BUFFER_SIZE );
 				sprintf( buffer, "Open file %s", randomNumFileOutput );
 				perror( buffer );
-				return 1;
+				return RETURN_1;
+			}
+			char tempFile[GENERAL_SIZE]={'\0'};
+			sprintf( tempFile, "%s.temp", randomNumFileOutput );
+			FILE *tempData = NULL;
+			remove( tempFile );
+			creat( tempFile, 0755 );
+			if(( tempData = fopen( tempFile, "a+" )) == NULL )
+			{
+				perror( "Open data file" );
+				return RETURN_1;
 			}
 			char readNum[ELEMENT_LENGTH]={'\0'};
 			while( !feof(fdata) )
@@ -151,42 +173,39 @@ void child_thread(char * fn)
 				{//If this lines is empty, break the loop.
 					break;
 				}
-				ranArray[currentIndex++] = atoi( readNum );
+				temp = atoi( readNum );
+				for( ss = 0; ss < MAXNUM; ss++ )
+				{
+					if( ! ( ranArray[ ss ] ^ temp ) )
+					{
+						ranArray[ ss ] = NULL_ARRAY;
+						fprintf( tempData, "%d\n", temp );
+						j++;
+					}
+				}
+				temp = NULL_RANDOM;
 			}
 			fclose( fdata );
-			fileNum = -1;
-			if( currentIndex >= 5 )
+			fclose( tempData );
+			memset( buffer, 0, BUFFER_SIZE );
+			sprintf( buffer, "mv %s %s", tempFile, randomNumFileOutput );
+			if ( system( buffer ) )
 			{
-				currentIndex -= 2;
-				j = currentIndex;
-				remove( randomNumFileOutput );
-				creat( randomNumFileOutput, 0755 );
-				if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
-				{
-					perror( "Open data file" );
-					return 1;
-				}
-				int t = 1;
-				while( t < currentIndex )
-				{
-					fprintf( output, "%d\n", ranArray[t++] );
-				}
-				fclose( output );
+				perror( buffer );
+				return RETURN_1;
 			}
-			else
+			fileNum = NULL_RANDOM;
+			if( j >= MOVE_THRESHOLD )
 			{
-				currentIndex= 1;
-				//#############################
-				goto goon;
-				//#############################
-				continue;
+				arrangeArray( ranArray, arraySize, NULL_ARRAY );
+				arraySize -= j;
+				j = 0;
 			}
 		}
 		else
 		{
 			goon:
-			currentIndex = 1;
-			j = 1;
+			j = 0;
 			memset( randomNumFileOutput, 0, GENERAL_SIZE);
 			sprintf( randomNumFileOutput, "%s%d", randomNumFile, i );
 			remove( randomNumFileOutput );
@@ -197,47 +216,62 @@ void child_thread(char * fn)
 			//if ( system( buffer ) )
 			//{
 			//	perror( buffer );
-			//	return 1;
+			//	return RETURN_1;
 			//}
 		
 		}
 		if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
 		{
 			perror( "Open data file" );
-			return 1;
+			return RETURN_1;
 		}
 		//setbuf( output, NULL );
 
-		temp = -1;
-		ranArray[0] = MAXNUM;
-		while( j <= MAXNUM )
+		temp = NULL_RANDOM;
+		//ranArray[0] = MAXNUM;
+		arraySize -= j;
+		j = 0;
+		while( j < arraySize )
 		{
 			//temp = rand() / ( RAND_MAX + 0.5 ) * MAXNUM;
-			temp = rand() % MAXNUM;
+			temp = rand() % arraySize;
 			//printf("RAND_MAX = %d, \tand temp = %d \n", RAND_MAX, temp );
 
-			ind = 0;
-			for( ind = 0; ind < currentIndex; ind++ )
+			if( ranArray[ temp ] ^ NULL_ARRAY )
 			{
-				if( ! ( temp ^  ranArray[ind] ) )
-				{
-					temp = -1;
-					break;
-				}
-				
-			}
-			if( temp ^ -1 )
-			{
-				ranArray[currentIndex++] = temp;
-				fprintf( output, "%d\n", temp );
-				temp = -1;
+				fprintf( output, "%d\n", ranArray[ temp ] );
+				ranArray[ temp ] = NULL_ARRAY;
 				j++;
+				if( j >= MOVE_THRESHOLD )
+				{
+					arrangeArray( ranArray, arraySize, NULL_ARRAY );
+					arraySize -= j;
+					j = 0;
+				}
 			}
+			temp = NULL_RANDOM;
 		}
 		fclose( output );
-		memset( ranArray, 0, sizeof(unsigned long) * ( MAXNUM + 1 ) );
+		//memset( ranArray, 0, sizeof(unsigned long) * ( MAXNUM ) );
 		i += 1;
 	}
 
-	return 0;
+	return RETURN_0;
+}
+
+void arrangeArray( unsigned long *array, int totalLength, unsigned long null_array )
+{
+	unsigned long ind = 0;
+	int count = 0;
+	for( ind = 0; ind < totalLength; ind++ )
+	{
+		if( ! ( array[ ind ] ^ null_array ) )
+		{
+			count++;
+		}
+		else if( count )
+		{
+			array[ ind - count ] = array[ ind ];
+		}
+	}
 }

@@ -47,6 +47,7 @@ int thread_count=0;//线程计数器
 pthread_t threads[MAX_THREAD_NUM];
 int threads_head_index=0;
 int threads_tail_index=0;
+pthread_mutex_t arr_mutex;
 
 char dataPath_2017[GENERAL_SIZE]={'\0'};
 char dataPath_2018[GENERAL_SIZE]={'\0'};
@@ -56,6 +57,8 @@ void arrangeArray( unsigned long *, int, unsigned long );
 
 int main( int argc, char *argv[] )
 {
+	pthread_mutex_init(&arr_mutex,NULL);
+
 	sprintf( dataPath_2017, "%s/trace_201708", dataPath );
 	sprintf( dataPath_2018, "%s/alibaba_clusterdata_v2018", dataPath );
 
@@ -132,11 +135,13 @@ void child_thread(char * fn)
 		
 		memset( buffer, 0, BUFFER_SIZE );
 		sprintf( buffer, "mkdir -p %s", randomNumFold );
+		pthread_mutex_lock(&arr_mutex);
 		if ( system( buffer ) )
 		{
 			perror( buffer );
 			return RETURN_1;
 		}
+		pthread_mutex_unlock(&arr_mutex);
 	
 		j= 1 ;
 		i = 1;
@@ -189,11 +194,13 @@ void child_thread(char * fn)
 			{
 				memset( buffer, 0, BUFFER_SIZE );
 				sprintf( buffer, "cp %s/randomNumFold/subDataset_1/set_%d  %s/randomNumFold/subDataset_%d/", dataPath_2018, i, dataPath_2018, m );
+				pthread_mutex_lock(&arr_mutex);
 				if( system( buffer ) )
 				{
 					perror( buffer );
 					return RETURN_1;
 				}
+				pthread_mutex_unlock(&arr_mutex);
 				continue;
 			}
 
@@ -210,11 +217,13 @@ void child_thread(char * fn)
 		
 			//memset( buffer, 0, BUFFER_SIZE );
 			//sprintf( buffer, "echo \"\" > %s",randomNumFileOutput );
+			//pthread_mutex_lock(&arr_mutex);
 			//if ( system( buffer ) )
 			//{
 			//	perror( buffer );
 			//	return RETURN_1;
 			//}
+			//pthread_mutex_unlock(&arr_mutex);
 			if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
 			{
 				perror( "Open data file" );
@@ -265,11 +274,13 @@ void child_thread(char * fn)
 
 	memset( buffer, 0, BUFFER_SIZE );
 	sprintf( buffer, "mkdir -p %s", randomNumFold );
+	pthread_mutex_lock(&arr_mutex);
 	if ( system( buffer ) )
 	{
 		perror( buffer );
 		return RETURN_1;
 	}
+	pthread_mutex_unlock(&arr_mutex);
 
 	i = 1;
 	j = 0;
@@ -338,11 +349,13 @@ void child_thread(char * fn)
 			fclose( tempData );
 			memset( buffer, 0, BUFFER_SIZE );
 			sprintf( buffer, "mv %s %s", tempFile, randomNumFileOutput );
+			pthread_mutex_lock(&arr_mutex);
 			if ( system( buffer ) )
 			{
 				perror( buffer );
 				return RETURN_1;
 			}
+			pthread_mutex_unlock(&arr_mutex);
 			fileNum = NULL_RANDOM;
 			if( j >= MOVE_THRESHOLD )
 			{
@@ -362,11 +375,13 @@ void child_thread(char * fn)
 	
 			//memset( buffer, 0, BUFFER_SIZE );
 			//sprintf( buffer, "echo \"\" > %s",randomNumFileOutput );
+			//pthread_mutex_lock(&arr_mutex);
 			//if ( system( buffer ) )
 			//{
 			//	perror( buffer );
 			//	return RETURN_1;
 			//}
+			//pthread_mutex_unlock(&arr_mutex);
 		}
 		if(( output = fopen( randomNumFileOutput, "a+" )) == NULL )
 		{

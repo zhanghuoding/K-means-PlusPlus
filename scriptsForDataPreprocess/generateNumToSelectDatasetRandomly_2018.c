@@ -139,6 +139,7 @@ void child_thread(char * fn)
 		if ( system( buffer ) )
 		{
 			perror( buffer );
+			pthread_mutex_unlock(&arr_mutex);
 			return RETURN_1;
 		}
 		pthread_mutex_unlock(&arr_mutex);
@@ -198,6 +199,7 @@ void child_thread(char * fn)
 				if( system( buffer ) )
 				{
 					perror( buffer );
+					pthread_mutex_unlock(&arr_mutex);
 					return RETURN_1;
 				}
 				pthread_mutex_unlock(&arr_mutex);
@@ -278,6 +280,7 @@ void child_thread(char * fn)
 	if ( system( buffer ) )
 	{
 		perror( buffer );
+		pthread_mutex_unlock(&arr_mutex);
 		return RETURN_1;
 	}
 	pthread_mutex_unlock(&arr_mutex);
@@ -353,6 +356,7 @@ void child_thread(char * fn)
 			if ( system( buffer ) )
 			{
 				perror( buffer );
+				pthread_mutex_unlock(&arr_mutex);
 				return RETURN_1;
 			}
 			pthread_mutex_unlock(&arr_mutex);
@@ -379,6 +383,7 @@ void child_thread(char * fn)
 			//if ( system( buffer ) )
 			//{
 			//	perror( buffer );
+			//	pthread_mutex_unlock(&arr_mutex);
 			//	return RETURN_1;
 			//}
 			//pthread_mutex_unlock(&arr_mutex);

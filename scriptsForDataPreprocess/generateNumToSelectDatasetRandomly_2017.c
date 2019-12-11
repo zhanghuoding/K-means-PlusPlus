@@ -40,8 +40,8 @@
 #define TIMES 10
 
 
-//char *  dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment";//path of the dataset.
-char *  dataPath=".";//path of the dataset.
+char *  dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment";//path of the dataset.
+//char *  dataPath=".";//path of the dataset.
 
 int thread_count=0;//线程计数器
 pthread_t threads[MAX_THREAD_NUM];

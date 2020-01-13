@@ -96,20 +96,39 @@ stages:
 #                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
 
 
-#2020-01-13-001
-select_dataset_2018:
+##2020-01-13-001
+#select_dataset_2018:
+#        stage: processing_dataset
+#        tags:
+#                - S4-C
+#                #- S4-B
+#                #- G1-C
+#        script:
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang
+#                - pwd
+#                - ls -alh
+#                - cd /mnt/shared/Datasets/bobowang/2222/
+#                - pwd
+#                - ls -alh
+#                - tar -zxvf /mnt/shared/Datasets/bobowang/2222/2018_randomNumFold_original-statisticed-data.tar.gz
+
+
+#2020-01-13-003
+select_dataset_2017:
         stage: processing_dataset
         tags:
                 - S4-C
                 #- S4-B
                 #- G1-C
         script:
-                - chmod 777 -R /mnt/shared/Datasets/bobowang
+                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
                 - pwd
                 - ls -alh
-                - cd /mnt/shared/Datasets/bobowang/2222/
-                - pwd
-                - ls -alh
-                - tar -zxvf /mnt/shared/Datasets/bobowang/2222/2018_randomNumFold_original-statisticed-data.tar.gz
+                - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+                - ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
+
+
+
 
 

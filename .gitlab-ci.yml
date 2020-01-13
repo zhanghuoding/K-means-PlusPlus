@@ -110,6 +110,6 @@ select_dataset_2018:
                 - cd /mnt/shared/Datasets/bobowang/2222/
                 - pwd
                 - ls -alh
-                #- tar -zxvf /mnt/shared/Datasets/bobowang/2222/
+                - tar -zxvf /mnt/shared/Datasets/bobowang/2222/2018_randomNumFold_original-statisticed-data.tar.gz
 
 

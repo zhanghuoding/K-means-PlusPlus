@@ -6,7 +6,7 @@ currentPath=`pwd`
 dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment"
 dataPath_2017=$dataPath"/trace_201708"
 dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
-clusterNum=10
+clusterNum=20
 columnNum=5
 
 #First deal with dataset "batch_instance.csv" at 2018.
@@ -27,6 +27,10 @@ ls -alh $dataPath_2018
 #keep the order the same to 201708,so "print $7-$6,$12,$11,$14,$13"
 #awk -F , 'BEGIN{ OFS=","} { if( $6 > 0 && $7 > $6 && $5 == "Terminated" && $11 > 0 && $12 > 0 && $13 > 0 && $14 > 0 ) { print $7-$6,$12,$11,$14,$13  >> "'${dataPath_2018}'/batch_instance-effective.csv"; } }' ${dataPath_2018}/batch_instance.csv
 #awk -F , 'END{print "batch_instance-effective.csv_2018-lines="NR;}'  ${dataPath_2018}/batch_instance-effective.csv
+
+
+awk -F , 'BEGIN{ OFS=","} { print $2,$4,$6,$8,$10  > "'${dataPath_2018}'/backup/Clustering-06/batch_instance-usable.csv"; } END{ print "Printed total lines = "NR}' ${dataPath_2018}/backup/Clustering-06/midstFile/clustered_column_9_based-batch_instance-effective.csv.backup
+
 
 #2019-12-05-002
 cp ${dataPath_2018}/batch_instance-effective.csv ${dataPath_2018}/batch_instance-effective.csv.backup
@@ -54,8 +58,6 @@ rm -f ${dataPath_2018}/batch_instance-effective.csv.backup
 #awk -F , 'END{print "set_3-lines="NR;}'  ${dataPath_2018}/randomNumFold/allSamples/set_3
 #awk -F , 'END{print "set_4-lines="NR;}'  ${dataPath_2018}/randomNumFold/allSamples/set_4
 #awk -F , 'END{print "set_5-lines="NR;}'  ${dataPath_2018}/randomNumFold/allSamples/set_5
-mv ${dataPath_2018}/batch_instance-usable.csv ${dataPath_2018}/batch_instance-effective.csv.backup
-awk -F , 'BEGIN{ OFS=","} { print $1,$3,$2,$5,$4  >> "'${dataPath_2018}'/batch_instance-usable.csv"; } END{ print "Printed total lines = "NR}' ${dataPath_2018}/batch_instance-effective.csv.backup
 
 #rm -rf ${currentPath}/scriptsForDataPreprocess/splitSets
 #gcc -std=c99 -g -w -o ${currentPath}/scriptsForDataPreprocess/splitSets ${currentPath}/scriptsForDataPreprocess/splitSets.c  -lpthread -lm

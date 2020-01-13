@@ -6,7 +6,7 @@ currentPath=`pwd`
 dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment"
 dataPath_2017=$dataPath"/trace_201708"
 dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
-clusterNum=6
+clusterNum=10
 columnNum=5
 
 #First deal with dataset "batch_instance.csv" at 2018.

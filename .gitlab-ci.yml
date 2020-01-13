@@ -43,7 +43,7 @@ stages:
 #                #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
 #
 
-#2019-12-15-004
+##2019-12-15-004
 #select_dataset_2017:
 #        stage: processing_dataset
 #        tags:
@@ -58,17 +58,19 @@ stages:
 #                - ./scriptsForDataPreprocess/dataItemSelect_2017.sh
 #                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
 
-#select_dataset_2018:
-#        stage: processing_dataset
-#        tags:
-#                - S4-C
-#                #- S4-B
-#                #- G1-C
-#        script:
-#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
-#                - pwd
-#                - ls -alh
-#                - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+select_dataset_2018:
+        stage: processing_dataset
+        tags:
+                #- S4-C
+                #- S4-B
+                - G1-C
+        script:
+                - chmod 777 -R /mnt/shared/Datasets/bobowang
+                - pwd
+                - ls -alh
+                - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+                - ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+                - chmod 777 -R /mnt/shared/Datasets/bobowang
 #                - ./scriptsForDataPreprocess/dataItemSelect_2018.sh > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log 1>&2
 #                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/splitSets ./scriptsForDataPreprocess/splitSets.c -lpthread -lm
 #                - ./scriptsForDataPreprocess/splitSets /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/batch_instance-usable.csv /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/randomNumFold-000/ 7 3
@@ -113,20 +115,20 @@ stages:
 #                - tar -zxvf /mnt/shared/Datasets/bobowang/2222/2018_randomNumFold_original-statisticed-data.tar.gz
 
 
-#2020-01-13-003
-select_dataset_2017:
-        stage: processing_dataset
-        tags:
-                - S4-C
-                #- S4-B
-                #- G1-C
-        script:
-                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
-                - pwd
-                - ls -alh
-                - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
-                - ./scriptsForDataPreprocess/dataItemSelect_2017.sh
-                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
+##2020-01-13-003
+#select_dataset_2017:
+#        stage: processing_dataset
+#        tags:
+#                - S4-C
+#                #- S4-B
+#                #- G1-C
+#        script:
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
+#                - pwd
+#                - ls -alh
+#                - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+#                - ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
 
 
 

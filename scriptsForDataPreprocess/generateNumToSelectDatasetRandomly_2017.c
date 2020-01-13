@@ -177,7 +177,7 @@ void child_thread(char * fn)
 				fgets( readNum, ELEMENT_LENGTH - 1, fdata);
 				if( strlen( readNum ) == 0 )
 				{//If this lines is empty, break the loop.
-					break;
+					continue;
 				}
 				temp = atoi( readNum );
 				for( ss = 0; ss < MAXNUM; ss++ )

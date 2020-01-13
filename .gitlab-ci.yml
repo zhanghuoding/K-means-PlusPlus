@@ -8,75 +8,80 @@ image:
 stages:
         - processing_dataset
 
-#2019-11-29-01
-processing_dataset_2017:
-        stage: processing_dataset
-        tags:
-                - S4-C
-                #- S4-B
-        script:
-                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
-                #- pwd
-                #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
-                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
-                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 1 2 3 4 5 6 7 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log
-
-                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
-                #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
-                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
-
-processing_dataset_2018:
-        stage: processing_dataset
-        tags:
-                - G1-C
-        script:
-                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
-                #- pwd
-                #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
-                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
-                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 1 2 3 4 5 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
-                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 6 7 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log
-                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
-                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
-                #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
-
-
-##2019-12-05-01
-#select_dataset_2017:
+##2019-11-29-01
+#processing_dataset_2017:
 #        stage: processing_dataset
 #        tags:
-#                #- S4-C
-#                - S4-B
-#                #- G1-C
+#                - S4-C
+#                #- S4-B
 #        script:
 #                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
-#                - pwd
-#                - ls -alh
-#                - chmod +x ./dataItemSelect_2017.sh
-#                - ./dataItemSelect_2017.sh
+#                #- pwd
+#                #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
+#                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.sh
+#                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017.c -lpthread -lm
+#                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2017 1 2 3 4 5 6 7 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/processing_dataset_2017-log.log 1>&2
+#
+#                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+#                #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
 #                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
 #
+#processing_dataset_2018:
+#        stage: processing_dataset
+#        tags:
+#                - G1-C
+#        script:
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
+#                #- pwd
+#                #- chmod +x ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
+#                #- ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.sh
+#                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018.c -lpthread -lm
+#                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 1 2 3 4 5 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log 1>&2
+#                - ./scriptsForDataPreprocess/generateNumToSelectDatasetRandomly_2018 6 7 8 9 10 > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log 1>&2
+#                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
+#                #- chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+#                #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+#
+
+#2019-12-15-004
+select_dataset_2017:
+        stage: processing_dataset
+        tags:
+                #- S4-C
+                - S4-B
+                #- G1-C
+        script:
+                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
+                - pwd
+                - ls -alh
+                - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+                - ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708
+
 #select_dataset_2018:
 #        stage: processing_dataset
 #        tags:
-#                #- S4-C
+#                - S4-C
 #                #- S4-B
-#                - G1-C
+#                #- G1-C
 #        script:
 #                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
 #                - pwd
 #                - ls -alh
-#                - chmod +x ./dataItemSelect_2018.sh
-#                - ./dataItemSelect_2018.sh
+#                - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+#                - ./scriptsForDataPreprocess/dataItemSelect_2018.sh > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/processing_dataset_2018-log.log 1>&2
+#                - gcc -std=c99 -g -w -o ./scriptsForDataPreprocess/splitSets ./scriptsForDataPreprocess/splitSets.c -lpthread -lm
+#                - ./scriptsForDataPreprocess/splitSets /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/batch_instance-usable.csv /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/randomNumFold-000/ 7 3
+#                - ./scriptsForDataPreprocess/splitSets /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/batch_instance-usable.csv /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/randomNumFold-001 7 3
+#                - ./scriptsForDataPreprocess/splitSets /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/batch_instance-usable.csv /mnt/shared/Datasets/bobowang/For_this_Experiment/trace_201708/randomNumFold-002/set_2 7 3
 #                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
 
-##2019-12-08-001
+##2019-12-16-006
 #look_for_dataset_2018:
 #        stage: processing_dataset
 #        tags:
-#                - G1-C
+#                - S4-C
+#                #- G1-C
 #        script:
 #                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
 #                - mkdir -p /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look
@@ -89,3 +94,7 @@ processing_dataset_2018:
 #                - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/midstFile/clustered_column_7_based-batch_instance-effective.csv.backup > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/clustered_column_7_based-batch_instance-effective.csv.backup
 #                - head -3000 /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/midstFile/clustered_column_9_based-batch_instance-effective.csv.backup > /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018/look/clustered_column_9_based-batch_instance-effective.csv.backup
 #                - chmod 777 -R /mnt/shared/Datasets/bobowang/For_this_Experiment/alibaba_clusterdata_v2018
+
+
+
+

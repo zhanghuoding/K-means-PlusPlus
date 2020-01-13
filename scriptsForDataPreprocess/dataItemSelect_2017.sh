@@ -6,7 +6,7 @@ currentPath=`pwd`
 dataPath="/mnt/shared/Datasets/bobowang/For_this_Experiment"
 dataPath_2017=$dataPath"/trace_201708"
 dataPath_2018=$dataPath"/alibaba_clusterdata_v2018"
-clusterNum=6
+clusterNum=10
 columnNum=5
 
 #First deal with dataset "batch_instance.csv" at 2017.
@@ -43,11 +43,15 @@ do
 	i=`expr $i + 1`
 	j=`expr ${j} + 2`
 done
-awk -F , 'BEGIN{ OFS=","} { print $2,$4,$6,$8,$10  >> "'${dataPath_2017}'/batch_instance-usable.csv"; } END{ print "Printed total lines = "NR}' ${dataPath_2017}/batch_instance-effective.csv.backup
+awk -F , 'BEGIN{ OFS=","} { print $2,$4,$6,$8,$10  > "'${dataPath_2017}'/batch_instance-usable.csv"; } END{ print "Printed total lines = "NR}' ${dataPath_2017}/batch_instance-effective.csv.backup
 rm -f ${dataPath_2017}/batch_instance-effective.csv.backup
 
 
 
+#2019-12-16-004
+rm -rf ${currentPath}/scriptsForDataPreprocess/splitSets
+gcc -std=c99 -g -w -o ${currentPath}/scriptsForDataPreprocess/splitSets ${currentPath}/scriptsForDataPreprocess/splitSets.c  -lpthread -lm
+${currentPath}/scriptsForDataPreprocess/splitSets ${dataPath_2017}/batch_instance-usable.csv ${dataPath_2017}/randomNumFold_002 7 3
 
 
 

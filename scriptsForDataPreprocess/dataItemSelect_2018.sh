@@ -29,10 +29,12 @@ ls -alh $dataPath_2018
 #awk -F , 'END{print "batch_instance-effective.csv_2018-lines="NR;}'  ${dataPath_2018}/batch_instance-effective.csv
 
 
-awk -F , 'BEGIN{ OFS=","} { print $2,$4,$6,$8,$10  > "'${dataPath_2018}'/backup/Clustering-06/batch_instance-usable.csv"; } END{ print "Printed total lines = "NR}' ${dataPath_2018}/backup/Clustering-06/midstFile/clustered_column_9_based-batch_instance-effective.csv.backup
 
 
 #2019-12-05-002
+
+#awk -F , 'BEGIN{ OFS=","} { print $2,$4,$6,$8,$10  > "'${dataPath_2018}'/backup/Clustering-06/batch_instance-usable.csv"; } END{ print "Printed total lines = "NR}' ${dataPath_2018}/backup/Clustering-06/midstFile/clustered_column_9_based-batch_instance-effective.csv.backup
+
 cp ${dataPath_2018}/batch_instance-effective.csv ${dataPath_2018}/batch_instance-effective.csv.backup
 mkdir -p ${dataPath_2018}/midstFile
 make
@@ -50,6 +52,12 @@ do
 done
 awk -F , 'BEGIN{ OFS=","} { print $2,$4,$6,$8,$10  > "'${dataPath_2018}'/batch_instance-usable.csv"; } END{ print "Printed total lines = "NR}' ${dataPath_2018}/batch_instance-effective.csv.backup
 rm -f ${dataPath_2018}/batch_instance-effective.csv.backup
+
+mkdir -p ${dataPath_2018}/clustering-${clusterNum}/cluster-center-for-each-column
+mv ${dataPath_2018}/cluster_center_column_* ${dataPath_2018}/clustering-${clusterNum}/cluster-center-for-each-column
+mv ${dataPath_2018}/midstFile ${dataPath_2018}/clustering-${clusterNum}/
+mv ${dataPath_2018}/batch_instance-usable.csv ${dataPath_2018}/clustering-${clusterNum}/
+mv ${dataPath_2018}/exe-cluster-log.log ${dataPath_2018}/clustering-${clusterNum}/
 
 
 ##2019-12-16-004

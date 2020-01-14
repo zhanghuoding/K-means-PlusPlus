@@ -3,7 +3,8 @@ image:
         #yumoshangguan/csvkit-python-36-centos7
         #yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.3
         #yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.4
-        yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.5-install_tool_called_file
+        #yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.5-install_tool_called_file
+        yumoshangguan/centos7.7.1908-gcc8.3.0-python3.6:v0.0.84-this_version_can_only_used_to_my_experiment
 
 stages:
         - processing_dataset
@@ -142,9 +143,9 @@ clustering_dataset_2017_and_2018:
                 - pwd
                 - ls -alh
                 - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2017.sh
-                - ./scriptsForDataPreprocess/dataItemSelect_2017.sh
+                #- ./scriptsForDataPreprocess/dataItemSelect_2017.sh
                 - chmod +x ./scriptsForDataPreprocess/dataItemSelect_2018.sh
-                - ./scriptsForDataPreprocess/dataItemSelect_2018.sh
+                #- ./scriptsForDataPreprocess/dataItemSelect_2018.sh
                 - chmod 777 -R /mnt/shared/Datasets/bobowang
 
 

@@ -46,6 +46,11 @@ done
 awk -F , 'BEGIN{ OFS=","} { print $2,$4,$6,$8,$10  > "'${dataPath_2017}'/batch_instance-usable.csv"; } END{ print "Printed total lines = "NR}' ${dataPath_2017}/batch_instance-effective.csv.backup
 rm -f ${dataPath_2017}/batch_instance-effective.csv.backup
 
+mkdir -p ${dataPath_2017}/clustering-${clusterNum}/cluster-center-for-each-column
+mv ${dataPath_2017}/cluster_center_column_* ${dataPath_2017}/clustering-${clusterNum}/cluster-center-for-each-column
+mv ${dataPath_2017}/midstFile ${dataPath_2017}/clustering-${clusterNum}/
+mv ${dataPath_2017}/batch_instance-usable.csv ${dataPath_2017}/clustering-${clusterNum}/
+mv ${dataPath_2017}/exe-cluster-log.log ${dataPath_2017}/clustering-${clusterNum}/
 
 
 ##2019-12-16-004
